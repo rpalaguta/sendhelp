@@ -1,0 +1,493 @@
+$title-font: 'Montserrat', sans-serif;
+$regular-font: 'Open Sans', sans-serif;
+$main-green-color: #17d26d;
+$white-color: #fff;
+$black-color: #000000;
+$grey-text: #333333;
+$main-font-size: 16px;
+
+%carousel-item {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+%carousel-text {
+  color: $white-color;
+  z-index: 1;
+}
+
+%green-button {
+  color: $white-color;
+  background-color: $main-green-color;
+  padding: .6rem 2rem;
+}
+
+%nav-links {
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+* {
+  box-sizing: border-box;
+  font-size: $main-font-size;
+}
+html, body {
+  font-family: $regular-font;
+}
+img { max-width: 100%; }
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+h4 {
+  font-size: 1.125rem;
+  font-family: $title-font;
+}
+.about-bg { 
+  background-image: url(/img/about-bg.jpg);
+  width: 100%;
+  height: 738px;
+  background-attachment: fixed;
+  background-size: cover;  
+}
+
+.bg {
+  background-color: rgba( 255, 255, 255, 0.9);
+}
+
+%card_pic {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+  // object-fit: fill;
+  // aspect-ratio: 16/9;
+}
+
+
+
+.flex { display: flex; }
+.justify-start { justify-content: flex-start; }
+.justify-end { justify-content: flex-end; }
+.justify-center { justify-content: center; }
+.align-center { align-items: center; }
+.align-start { align-items: flex-start; }
+.align-end { align-items: flex-end; }
+.justify-between { justify-content: space-between; }
+.direction-column { flex-direction: column; }
+.w-100 { width: 100%!important; }
+.w-70 { width: 70%!important; margin: auto; }
+.h-100 { height: 100vh; }
+
+
+// Navbar
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5rem;
+  width: 100%;
+  z-index: 2;
+
+
+
+  .navbar {
+    transition: all .5s ease;
+    height: 60px;
+
+    &.navbar.scrolled {
+      background-color: rgb(0, 0, 0);
+      height: 45px;
+    }
+    .nav-logo {
+      font-size: 1.8rem;
+      font-weight: 600;
+      border-left: 0.2rem solid $main-green-color;
+      max-height: 1.8rem;
+      display: flex;
+      align-items: center;
+      padding-left: .8rem;
+      letter-spacing: .2rem;
+    }
+    .navbar-toggler {
+      z-index: 5;
+      height: 2.5rem;
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+
+    #navbar-menu {
+      ul {
+        margin: 0;
+        display: flex;
+        padding: .5rem;
+
+        li {
+          position: relative;
+          a {
+            @extend %nav-links;
+            color: $white-color;
+            padding: .5rem .8rem;
+            white-space: nowrap;
+            cursor: pointer;
+    
+            &:hover {
+              color: $main-green-color;
+            }
+          }
+        }
+      }
+      #dropdown1-menu, #dropdown2-menu {
+        display: none;
+        background-color: $white-color;
+        box-shadow: 0px 0px 30px rgb(127 137 161 / 25%);
+      }
+
+      #dropdown1-menu {
+        &.active-lg {
+          display: block;
+          position: absolute;
+          top: 3rem;
+          left: 0;
+          width: 12rem;
+
+          li {
+            a {
+              @extend %nav-links;
+              color: $grey-text;
+              white-space: nowrap;
+              &:hover {
+                color: $main-green-color;
+              }
+            }
+            
+          }
+        }
+      }
+      #dropdown2-menu {
+        z-index: 4;
+        &.active-lg {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: -12.5rem;
+          width: 12rem;
+
+          li {
+            a {
+              @extend %nav-links;
+              color: $grey-text;
+              white-space: nowrap;
+              &:hover {
+                color: $main-green-color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Carousel section
+.section1 {
+  .carousel-inner {
+    max-height: 100vh;
+  }
+  .carousel-item {
+    padding-top: 5rem;
+    text-align: center;
+
+    &-1 {
+      background-image: url(../img/1.jpeg);
+      @extend %carousel-item;
+    }
+    &-2 {
+      background-image: url(../img/2.jpeg);
+      @extend %carousel-item;
+    }
+    &-3 {
+      background-image: url(../img/3.jpeg);
+      @extend %carousel-item;
+    }
+    &-4 {
+      background-image: url(../img/4.jpeg);
+      @extend %carousel-item;
+    }
+    &-5 {
+      background-image: url(../img/5.jpeg);
+      @extend %carousel-item;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba($color: #000000, $alpha: 0.7);
+    }
+    .carousel-item-text {
+      height: 100vh;
+
+      p {
+        @extend %carousel-text;
+        margin-bottom: 2rem;
+        max-width: 60%;
+      }
+      
+      h2 {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 2rem;
+        @extend %carousel-text;
+      }
+      a {
+        @extend %green-button;
+        z-index: 1;
+        border-radius: 2rem;
+      }
+    }
+
+  }
+}
+
+// Darbo pradžia
+
+a {
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    color: $main-green-color!important;
+  }
+}
+
+
+// Services section
+.services {
+  width: 100%;
+  height: 200px;
+  background-color: $black-color;
+    #to_bottom {
+      background-image: linear-gradient($black-color, #232222, $black-color);
+    }
+    .services_element {
+      color: $white-color;
+      height: 100%;
+      width: 440px;
+      padding: 30px 20px;
+      h4{
+        margin: 15px 0;
+      }
+        a {
+          color: $white-color;
+        }
+        p {
+          font-size: 0.875rem;
+          margin: 0;
+          line-height: 1.5rem;
+        }
+    }
+}
+
+// About us section
+.about_us {
+  padding: 60px 0 40px 0;
+
+  .about_main {
+    max-width: 1320px;
+    margin: auto;
+
+    .about_sub {
+      padding-left: 15%;
+    }
+
+    a {
+      margin: 40px 0 12px 0;
+      text-align: center;
+      font-weight: bold;
+      font-family: $title-font;
+      font-size: 1.25rem;
+    }
+
+    p {
+      padding: 0 20px 20px 20px;
+      margin: 0;
+      font-family: $regular-font;
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+      .a_header {
+        text-transform: uppercase;
+        text-align: center;
+        font-family: $title-font;
+        font-size: 2rem;
+        font-weight: bold;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+        &::before {
+          content: "";
+          position: absolute;
+          display: block;
+          width: 120px;
+          height: 1px;
+          background: #ddd;
+          bottom: 1px;
+          left: calc(50% - 60px);
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          display: block;
+          width: 40px;
+          height: 3px;
+          background: #18d26e;
+          bottom: 0;
+          left: calc(50% - 20px);
+        }
+      }
+      .a_description {
+        text-align: center;
+        font-family: $regular-font;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+      }
+      .card {
+        height: 450px;
+        margin: 0 10px;
+        border-radius: 5px;
+        overflow: hidden;
+        border: none;
+        box-shadow: 0px 2px 12px rgb(0 0 0 / 8%);
+        }
+
+        .about-icon {
+          font-size: 2rem;
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 64px;
+          height: 64px;
+          left: calc(50% - 32px);
+          bottom: 155px;
+          text-align: center;
+          color: $white-color;
+          border-radius: 50%;
+          border: 4px solid #fff;
+          background-color: $main-green-color;
+          transition: .3s;
+          
+          &:hover {
+            color: $main-green-color;
+            background-color: $white-color;
+          }
+          
+        }
+
+        .card_pic1 {
+          background-image: url(/img/ab-card-1.jpg);
+          @extend %card_pic;
+        }
+
+        .card_pic2 {
+          background-image: url(/img/ab-card-2.jpg);
+          @extend %card_pic;
+        }
+        .card_pic3 {
+          background-image: url(/img/ab-card-3.jpg);
+          @extend %card_pic;
+        }
+      } 
+    }
+
+@media (max-width: 991px) {
+  .header {
+    .navbar {
+      #navbar-menu {
+        visibility: hidden;
+        flex-direction: column;
+        background-color: rgba(black, .5);
+        position: fixed;
+        z-index: 3;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+        overflow-y: auto;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 3rem;
+
+        ul {
+          width: 95%;
+          background-color: $white-color;
+          flex-direction: column;
+
+          li {
+            a {
+              text-align: center;
+              color: $grey-text;
+              padding: .5rem;
+            }
+          }
+        }
+        &.active {
+          visibility: visible;
+          display: flex;
+          overflow-y: auto;
+          width: 100%;
+        
+          
+          #dropdown2-menu, #dropdown1-menu {
+            box-shadow: 0px 0px 30px rgb(127 137 161 / 25%);
+            padding: 0;
+            height: 0;
+            overflow: hidden;
+            z-index: 2;
+            background-color: $white-color;
+            white-space: nowrap;
+            width: auto;
+            position: static;
+
+            li {
+              a {
+                color: $grey-text;
+                padding: .5rem;
+              }
+            }
+
+            &.active {
+              display: block;
+              height: auto;
+              padding: .2rem;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1800px) {
+  .header {
+    .navbar {
+      #navbar-menu {
+        #dropdown2-menu {
+          &.active-lg {
+            left: 11.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
